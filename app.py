@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-STATIC_DIRECTORY = os.path.join(os.path.dirname(__file__), 'web_scapper', 'static')
 st.set_page_config(layout="wide")
 st.markdown(
     """
@@ -26,6 +25,8 @@ with imcol2:
     st.image('image/Logo_final.png')
 with imcol3:
     st.write("")
+st.markdown("<p style='text-align: center; color: black; font-size:20px;'><span style='font-weight: bold'>Problem Statement: </span>To classify whether GPT or Human-generated the given content.</p>", unsafe_allow_html=True)
+st.markdown("<hr style=height:2.5px;background-color:gray>",unsafe_allow_html=True)
 #---------Side bar-------#
 
 with st.sidebar:
