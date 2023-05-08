@@ -105,33 +105,31 @@ def Text_Classifier():
                         with cc1:
                             df=pd.DataFrame({"Wordcount":default,"Result":result})
                             st.dataframe(df)
-        
-
         # PDF file
-        if vAR_file_type == 'PDF file':
-            with col1:
-                st.write('## ')
-                st.write('# ')
-                st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Upload File Here</span></p>", unsafe_allow_html=True)
-            with col2:
-                vAR_file = st.file_uploader('',type='pdf')
-            if vAR_file is not None:
-                header_footer_cuter(vAR_file)
-                vAR_pdf_content = pdf_text()
-                vAR_pdf_content = ' '.join(vAR_pdf_content.split())
-                with col2:
-                    if st.button("Submit"):
-                        if len(vAR_pdf_content)<400:
-                            vAR_response = find_the_input(vAR_pdf_content)
-                            with col2:
-                                st.success(vAR_response)
-                        else:
-                            prompt=spliter(vAR_pdf_content)
-                            result=[]
-                            for j in prompt:
-                                vAR_response = find_the_input(j)
-                                result.append(vAR_response)
-                            default=rowgen(result)
-                            with cc1:
-                                df=pd.DataFrame({"Wordcount":default,"Result":result})
-                                st.dataframe(df)
+        if vAR_file_type == 'PDF file':
+            with col1:
+                st.write('## ')
+                st.write('# ')
+                st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Upload File Here</span></p>", unsafe_allow_html=True)
+            with col2:
+                vAR_file = st.file_uploader('',type='pdf')
+            if vAR_file is not None:
+                header_footer_cuter(vAR_file)
+                vAR_pdf_content = pdf_text()
+                vAR_pdf_content = ' '.join(vAR_pdf_content.split())
+                with col2:
+                    if st.button("Submit"):
+                        if len(vAR_pdf_content)<400:
+                            vAR_response = find_the_input(vAR_pdf_content)
+                            with col2:
+                                st.success(vAR_response)
+                        else:
+                            prompt=spliter(vAR_pdf_content)
+                            result=[]
+                            for j in prompt:
+                                vAR_response = find_the_input(j)
+                                result.append(vAR_response)
+                            default=rowgen(result)
+                            with cc1:
+                                df=pd.DataFrame({"Wordcount":default,"Result":result})
+                                st.dataframe(df)
