@@ -5,6 +5,7 @@ from src.rowgenerater import rowgen
 from src.web_Scapper import get_paragraphs
 from src.pdf import header_footer_cuter
 from src.pdf_textretrive import pdf_text,text_retrive
+from src.table_design import table
 import pandas as pd
 def prev1():
     st.session_state['preview1']="No"
@@ -13,18 +14,20 @@ def prev2():
 def prev3():
     st.session_state['preview3']="No"
 
+
 def Text_Classifier():
     w1,col1,col2,w2=st.columns((1.5,2.5,4,.1))
     cc2,cc1,cc3=st.columns((2,6,0.2))
     col11,col22,col33=st.columns((2,6,0.2))
+    
     with col1:
         st.write('# ')
         st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Input Type</span></p>", unsafe_allow_html=True)
     with col2:
-        vAR_input = st.selectbox('',['Select','Text input','File format','Website URL'])
+        vAR_input = st.selectbox('',['Select','Direct User Entry','File Upload','Web URL'])
 
     # Text input
-    if vAR_input == 'Text input':
+    if vAR_input == 'Direct User Entry':
         with col1:
             st.write('# ')
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Input Text</span></p>", unsafe_allow_html=True)
@@ -33,6 +36,7 @@ def Text_Classifier():
             vAR_text = ' '.join(vAR_text.split())
         if vAR_text !="":
             with col2:
+                st.markdown("")
                 st.markdown("")
                 if st.button("Submit"):
                     if len(vAR_text)<400:
@@ -47,10 +51,13 @@ def Text_Classifier():
                             result.append(vAR_response)
                         default=rowgen(result)
                         with cc1:
-                            df=pd.DataFrame({"Wordcount":default,"Result":result})
-                            st.dataframe(df)
+                            df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
+                            st.markdown("## ")
+                            table_style=table(df)
+                            # Display the table using HTML
+                            st.write(table_style, unsafe_allow_html=True)
     # files format
-    elif vAR_input == 'File format':
+    elif vAR_input == 'File Upload':
         with col1:
             st.write('# ')
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Select File Format</span></p>", unsafe_allow_html=True)
@@ -87,6 +94,7 @@ def Text_Classifier():
                     with col2:
                         try:
                             st.markdown("")
+                            st.markdown("")
                             if st.button("Submit",on_click=prev1):
                                 if len(txt_content)<400:
                                     vAR_response = find_the_input(txt_content)
@@ -100,8 +108,12 @@ def Text_Classifier():
                                         result.append(vAR_response)
                                     default=rowgen(result)
                                     with cc1:
-                                        df=pd.DataFrame({"Wordcount":default,"Result":result})
-                                        st.dataframe(df)
+                                        df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
+                                        st.markdown("## ")
+                                        table_style=table(df)
+                                        # Display the table using HTML
+                                        st.write(table_style, unsafe_allow_html=True)
+                                        #st.dataframe(df)
                         except Exception as e:
                             st.error("Text cannot be extracted from Uploaded File")
         # PDF file
@@ -135,6 +147,7 @@ def Text_Classifier():
                     if vAR_preview2 != "Select":
                         with col2:
                             st.markdown("")
+                            st.markdown("")
                             if st.button("Submit",on_click=prev2):
                                 if len(vAR_pdf_content)<400:
                                     vAR_response = find_the_input(vAR_pdf_content)
@@ -148,12 +161,15 @@ def Text_Classifier():
                                         result.append(vAR_response)
                                     default=rowgen(result)
                                     with cc1:
-                                        df=pd.DataFrame({"Wordcount":default,"Result":result})
-                                        st.dataframe(df)
+                                        df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
+                                        st.markdown("## ")
+                                        table_style=table(df)
+                                        # Display the table using HTML
+                                        st.write(table_style, unsafe_allow_html=True)
                 except Exception as e:
                     st.error("Text cannot be extracted from Uploaded File")
     # websit input
-    elif vAR_input == 'Website URL':
+    elif vAR_input =='Web URL':
         with col1:
             st.write('# ')
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Enter Valid Web URL</span></p>", unsafe_allow_html=True)
@@ -180,6 +196,7 @@ def Text_Classifier():
                 with col2:
                     try:
                         st.markdown("")
+                        st.markdown("")
                         if st.button("Submit",on_click=prev3):
                             if len(vAR_text)<400:
                                 vAR_response = find_the_input(txt_content)
@@ -193,7 +210,10 @@ def Text_Classifier():
                                     result.append(vAR_response)
                                 default=rowgen(result)
                                 with cc1:
-                                    df=pd.DataFrame({"Wordcount":default,"Result":result})
-                                    st.dataframe(df)
+                                    df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
+                                    st.markdown("## ")
+                                    table_style=table(df)
+                                    # Display the table using HTML
+                                    st.write(table_style, unsafe_allow_html=True)
                     except Exception as e:
                         st.error("Text cannot be extracted from Uploaded URL")
