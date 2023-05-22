@@ -50,7 +50,7 @@ def Text_Classifier():
                             vAR_response = find_the_input(j)
                             result.append(vAR_response)
                         default=rowgen(result)
-                        with cc1:
+                        with col22:
                             df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
                             st.markdown("## ")
                             table_style=table(df)
@@ -107,7 +107,7 @@ def Text_Classifier():
                                         vAR_response = find_the_input(j)
                                         result.append(vAR_response)
                                     default=rowgen(result)
-                                    with cc1:
+                                    with col22:
                                         df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
                                         st.markdown("## ")
                                         table_style=table(df)
@@ -160,7 +160,7 @@ def Text_Classifier():
                                         vAR_response = find_the_input(j)
                                         result.append(vAR_response)
                                     default=rowgen(result)
-                                    with cc1:
+                                    with col22:
                                         df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
                                         st.markdown("## ")
                                         table_style=table(df)
@@ -209,7 +209,7 @@ def Text_Classifier():
                                     vAR_response = find_the_input(j)
                                     result.append(vAR_response)
                                 default=rowgen(result)
-                                with cc1:
+                                with col22:
                                     df=pd.DataFrame({"Word Count in the Given Text":default,"Model Outcome (Classification/Prediction)":result})
                                     st.markdown("## ")
                                     table_style=table(df)
