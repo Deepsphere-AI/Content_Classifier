@@ -18,7 +18,7 @@ def prev3():
 def Text_Classifier():
     w1,col1,col2,w2=st.columns((1.5,2.5,4,.1))
     cc2,cc1,cc3=st.columns((2,6,0.2))
-    col11,col22,col33=st.columns((2,6,0.2))
+    col11,col22,col33=st.columns((2,8,0.2))
     
     with col1:
         st.write('# ')
