@@ -33,8 +33,7 @@ st.markdown("<hr style=height:2.5px;margin-top:0px;background-color:gray;>",unsa
 #---------Side bar-------#
 
 with st.sidebar:
-    selected = st.selectbox("",
-                     ['Select Application','Content Classifier'],key='text')
+    selected = st.selectbox("",['Content Classifier'],key='text')
     Library = st.selectbox("",
                      ["Library Used","Streamlit","Image","Pandas","Requests"],key='text1')
     Gcp_cloud = st.selectbox("",
