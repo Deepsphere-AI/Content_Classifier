@@ -14,7 +14,6 @@ def prev2():
 def prev3():
     st.session_state['preview3']="No"
 
-
 def Text_Classifier():
     w1,col1,col2,w2=st.columns((1.5,2.5,4,.1))
     cc2,cc1,cc3=st.columns((2,6,0.2))
@@ -23,7 +22,7 @@ def Text_Classifier():
         st.write("## ")
         st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Select Model</span></p>", unsafe_allow_html=True)
     with col2:
-        vAR_Model = ['Select','GPT-3','GPT-3.5','GPT-4']
+        vAR_Model = ['GPT-3','GPT-3.5','GPT-4']
         vAR_input_model = st.radio(' ',vAR_Model,horizontal=True)
     if vAR_input_model!="Select":
         with col1:
@@ -36,7 +35,7 @@ def Text_Classifier():
         if vAR_input == 'Direct User Entry':
             with col1:
                 st.write('# ')
-                st.write('# ')
+                st.write('### ')
                 st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Input Text</span></p>", unsafe_allow_html=True)
             with col2:
                 vAR_text = st.text_area('')
@@ -66,7 +65,7 @@ def Text_Classifier():
         # files format
         elif vAR_input == 'File Upload':
             with col1:
-                st.write('# ')
+                st.write('## ')
                 st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Select File Format</span></p>", unsafe_allow_html=True)
             with col2:
                 vAR_file_type = st.selectbox("",['Select','Text file','PDF file'])
@@ -178,7 +177,7 @@ def Text_Classifier():
         # websit input
         elif vAR_input =='Web URL':
             with col1:
-                st.write('# ')
+                st.write('## ')
                 st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Enter Valid Web URL</span></p>", unsafe_allow_html=True)
             with col2:
                 vAR_link = st.text_input('')
@@ -223,4 +222,4 @@ def Text_Classifier():
                                         # Display the table using HTML
                                         st.write(table_style, unsafe_allow_html=True)
                         except Exception as e:
-                            st.error("Text cannot be extracted from Uploaded URL")
+                            st.error("Try again after some Time")
